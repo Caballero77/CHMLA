@@ -25,6 +25,7 @@ private:
 	void SetY();
 	void SetX();
 public:
+	LU();
 	~LU();
 	void DoCalculate();
 	void ShowResult();
@@ -35,7 +36,9 @@ class GaussAlg :public Alg
 private:
 	float** Inverse;
 	float Key;
+
 public:
+	GaussAlg();
 	~GaussAlg();
 	void DoCalculate();
 	void ShowResult();
@@ -49,6 +52,7 @@ private:
 	void SetY();
 	void SetX();
 public:
+	MOSR();
 	~MOSR();
 	void DoCalculate();
 	void ShowResult();

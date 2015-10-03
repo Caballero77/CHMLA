@@ -13,10 +13,18 @@ GaussAlg::~GaussAlg()
 	delete[]Inverse;
 }
 
+GaussAlg::GaussAlg()
+{
+	Inverse = new float*[Size];
+	for (int i = 0; i < Size; i++)
+	{
+		Inverse[i] = new float[Size];
+	}
+}
+
 void GaussAlg::DoCalculate()
 {
 	bool v = true;
-	Inverse = new float*[Size];
 	float* x, ** M, *b,** CloneA;
 	x = new float[Size];
 	M = new float*[Size];

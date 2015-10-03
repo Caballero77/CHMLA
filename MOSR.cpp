@@ -2,11 +2,7 @@
 
 void MOSR::SetU()
 {
-	U = new float*[Size];
-	for (int i = 0; i < Size; i++)
-	{
-		U[i] = new float[Size];
-	}
+	float m;
 	for (int i = 0; i < Size; i++)
 	{
 		for (int j = 0; j < Size; j++)
@@ -14,7 +10,6 @@ void MOSR::SetU()
 			U[i][j] = 0;
 		}
 	}
-	float m;
 	for (int i = 0; i < Size;i++)
 	{
 		m = 0;
@@ -45,7 +40,6 @@ void MOSR::SetU()
 void MOSR::SetY()
 {
 	float m;
-	Y = new float[Size];
 	for (int i = 0; i < Size; i++)
 	{
 		m = 0;
@@ -60,7 +54,6 @@ void MOSR::SetY()
 void MOSR::SetX()
 {
 	float m = 0;
-	X = new float[Size];
 	for (int i = Size - 1; i >= 0; i--)
 	{
 		m = 0;
@@ -115,4 +108,14 @@ MOSR::~MOSR()
 	delete[]Y;
 	delete[]X;
 	delete[]B;
+}
+
+MOSR::MOSR()
+{
+	Y = new float[Size];
+	U = new float*[Size];
+	for (int i = 0; i < Size; i++)
+	{
+		U[i] = new float[Size];
+	}
 }

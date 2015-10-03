@@ -72,6 +72,18 @@ void LU::SetX()
 	}
 }
 
+LU::LU()
+{
+	L = new float*[Size];
+	U = new float*[Size];
+	Y = new float[Size];
+	for (int i = 0; i < Size; i++)
+	{
+		L[i] = new float[Size];
+		U[i] = new float[Size];
+	}
+}
+
 LU::~LU()
 {
 	for (int i = 0; i < Size; i++)
@@ -90,14 +102,6 @@ LU::~LU()
 
 void LU::DoCalculate()
 {
-	L = new float*[Size];
-	U = new float*[Size];
-	Y = new float[Size];
-	for (int i = 0; i < Size; i++)
-	{
-		L[i] = new float[Size];
-		U[i] = new float[Size];
-	}
 	SetLU();
 	SetY();
 	SetX();
