@@ -1,6 +1,7 @@
 #include <fstream>
 #include <iostream>
 #include <iomanip>
+#include <thread>
 
 class Alg
 {
@@ -9,12 +10,12 @@ protected:
 	float *B;
 	float *X;
 	int Size;
-	int Precision = 5;
+	int Precision = 3;
 public:
 	Alg();
 	void SetPrecision(int _Precision);
-	void ShowMainData();
-	void ShowResult();
+	virtual void ShowMainData();
+	virtual void ShowResult();
 };
 
 class LU :public Alg
@@ -55,5 +56,19 @@ public:
 	MOSR();
 	~MOSR();
 	void DoCalculate();
+	void ShowResult();
+};
+
+class LPR :public Alg
+{
+private:
+	float* Alpha,*Beta,*a,*b,*c;
+	void setAlpBet();
+	void setResult();
+public:
+	LPR();
+	~LPR();
+	void DoCalculate();
+	void ShowMainData();
 	void ShowResult();
 };

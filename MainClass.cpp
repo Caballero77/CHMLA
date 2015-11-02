@@ -37,6 +37,7 @@ Alg::Alg()
 		}
 	}
 	File.close();
+	SetPrecision(Precision);
 }
 
 void Alg::ShowMainData()
@@ -58,4 +59,5 @@ void Alg::ShowResult()
 void Alg::SetPrecision(int _Precision)
 {
 	Precision = _Precision;
+	std::cout << std::setw(Precision + 1) << std::right << std::setprecision(Precision);
 }
