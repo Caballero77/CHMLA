@@ -1,16 +1,17 @@
 #include "MainClass.h"
 
-void LPR::DoCalculate()
+void PPR::DoCalculate()
 {
+	std::cout << Size;
 	setAlpBet();
 	setResult();
 }
 
-void LPR::setAlpBet()
+void PPR::setAlpBet()
 {
 	Alpha[0] = (-1) * A[0][1];
 	Beta[0] = B[0];
-	for (int i = 0; i < Size - 1; i++)
+	for (int i = 0; i < Size - 2; i++)
 	{
 		float r = c[i] - Alpha[i] * a[i];
 		Alpha[i + 1] = b[i] / r;
@@ -18,7 +19,7 @@ void LPR::setAlpBet()
 	}
 }
 
-void LPR::setResult()
+void PPR::setResult()
 {
 	X[Size - 1] = (B[Size - 1] - A[Size - 1][Size - 2] * Beta[Size - 1]) / (1 + A[Size - 1][Size - 2] * Alpha[Size - 1]);
 	for (int i = Size - 2; i >= 0; i--)
@@ -27,7 +28,7 @@ void LPR::setResult()
 	}
 }
 
-LPR::LPR()
+PPR::PPR()
 {
 	Alpha = new float[Size];
 	Beta = new float[Size];
@@ -42,7 +43,7 @@ LPR::LPR()
 	}
 }
 
-LPR::~LPR()
+PPR::~PPR()
 {
 	delete[]a;
 	delete[]b;
@@ -51,7 +52,7 @@ LPR::~LPR()
 	delete[]Beta;
 }
 
-void LPR::ShowMainData()
+void PPR::ShowMainData()
 {
 	Alg::ShowMainData();
 	std::cout << "A = ";
@@ -72,15 +73,15 @@ void LPR::ShowMainData()
 	std::cout << std::endl;
 }
 
-void LPR::ShowResult()
+void PPR::ShowResult()
 {
 	std::cout << "Alpha = ";
-	for (int i = 0; i < Size; i++)
+	for (int i = 0; i < Size -1 ; i++)
 	{
 		std::cout << Alpha[i] << " ";
 	}
 	std::cout << std::endl << "Beta  =  ";
-	for (int i = 0; i < Size ; i++)
+	for (int i = 0; i < Size - 1 ; i++)
 	{
 		std::cout << Beta[i] << " ";
 	}

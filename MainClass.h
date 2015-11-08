@@ -16,6 +16,7 @@ public:
 	void SetPrecision(int _Precision);
 	virtual void ShowMainData();
 	virtual void ShowResult();
+	virtual void DoCalculate() = 0;
 };
 
 class LU :public Alg
@@ -59,16 +60,45 @@ public:
 	void ShowResult();
 };
 
-class LPR :public Alg
+class PPR :public Alg
 {
 private:
 	float* Alpha,*Beta,*a,*b,*c;
 	void setAlpBet();
 	void setResult();
 public:
-	LPR();
-	~LPR();
+	PPR();
+	~PPR();
 	void DoCalculate();
 	void ShowMainData();
 	void ShowResult();
+};
+
+class Iter : public Alg
+{
+protected:
+	float Error = 0.0000000001;
+	int MaxIter = 1000000;
+	bool ShowCalculate = false;
+	void Change();
+public:
+	virtual void DoCalculate() = 0;
+	void ShowResult();
+	void setError(float error);
+	void setMaxIter(int maxIter);
+	void showCalculate(bool show);
+}; 
+
+class Yakobi : public Iter
+{
+public:
+	void DoCalculate();
+};
+
+class Zeydel : public Iter
+{
+private:
+	bool converge(float *temp_X);
+public:
+	void DoCalculate();
 };
